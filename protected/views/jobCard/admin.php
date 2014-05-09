@@ -3,11 +3,21 @@ $this->breadcrumbs=array(
 	'Job Cards'=>array('index'),
 	'Manage',
 );
-
-$this->menu=array(
+?>
+<div class="sidebar">
+<?php
+ $this->widget('bootstrap.widgets.TbMenu', array(
+ 	  'htmlOptions'=>array('style'=>'width: 250px, float:right'),
+     'type'=>'list',
+ 	'items'=>array(
 	array('label'=>'List JobCard','url'=>array('index')),
-	array('label'=>'Create JobCard','url'=>array('create')),
-);
+ 	array('label'=>'Create JobCard','url'=>array('create')),
+
+ ),
+ ));
+ ?>
+ </div>
+<?php
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -20,11 +30,9 @@ $('.search-form form').submit(function(){
 	});
 	return false;
 });
+
 ");
 ?>
-
-<h1>Manage Job Cards</h1>
-
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
@@ -35,15 +43,16 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'job-card-grid',
+	'type'=>'striped bordered condensed',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'risk_assessment_id',
+		
 		'plant_id',
 		'maintenance_events_id',
 		'type_id',
 		'service_or_repair_id',
+		'risk_assessment_id',
 		/*
 		'rego',
 		'kilometers_or_hours',
@@ -58,6 +67,7 @@ $('.search-form form').submit(function(){
 		'date_completed',
 		'job_completed',
 		'vehicle_safe_for_work',
+		
 		'pay_id',
 		'old_id',
 		'old_task_id',

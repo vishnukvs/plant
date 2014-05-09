@@ -27,6 +27,7 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('jobcard_no')); ?>:</b>
 	<?php echo CHtml::encode($data->jobcard_no); ?>
 	<br />
+	
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('mechanic_id')); ?>:</b>
